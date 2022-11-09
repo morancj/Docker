@@ -91,19 +91,24 @@ The failures are
 
 These are to be expected.
 
-## Terminating
+## Terminating the container
 
 On a clean exit, this should clean up after itself. If you accidentally or
 deliberately crash it, you may have stopped containers on your system.
 
-To check, use `docker ps -a`. If you see it, you can remove like this:
+To check, use `docker ps -a`:
 
 ```shell
 $ docker ps -a
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                        PORTS     NAMES
 89dcc9c3a82b   aaa343628a70   "/bin/sh -c 'export …"   30 minutes ago   Exited (100) 29 minutes ago             silly_johnson
+```
 
+## Removing the container
 
+If you see an `Exited` container, you can remove it like this:
+
+```shell
 $ docker rm 89dcc9c3a82b
 ```
 
