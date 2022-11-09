@@ -42,7 +42,36 @@ $ docker run \
 
 replacing `$user` and `$hostname` with the appropriate values.
 
-### Tip
+### Command protip
+
+Make this massive Docker command a local function with something like this:
+
+```shell
+function oldssh(){
+  docker run \
+  --cap-drop=all \
+  --memory=1GB \
+  --rm \
+  -t \
+  -i \
+  -e SSH_AUTH_SOCK="${SSH_AUTH_SOCK}" \
+  --mount type=bind,src=$SSH_AUTH_SOCK,dst="${SSH_AUTH_SOCK}",readonly=false \
+  --mount type=bind,src="$HOME/.ssh",dst="$HOME/.ssh",readonly=true \
+  --mount type=bind,src=/etc/group,dst=/etc/group,readonly=true \
+  --mount type=bind,src=/etc/passwd,dst=/etc/passwd,readonly=true \
+  -u "$(id -u)":"$(id -g)" \
+  --userns=host \
+  --hostname $(hostname)-ubuntu-1404-ssh \
+  "ubuntu/ssh:14.04" "${1}"
+}
+```
+
+Use it with `oldssh $user@$host`.
+
+There are smarter ways to do this, including sharing common options, etc, but
+this will get you started.
+
+### SSH protip
 
 If you have a GitHub account and your SSH key loaded, you can use
 `git@github.com` for `$user@$hostname`. If you see something like this, you have
