@@ -124,3 +124,12 @@ You should see the container removed in the output of any subsequent
 Remove with `docker rmi ubuntu/ssh:14.04`.
 
 Check with `docker image ls`.
+
+## I need a really ancient base image, what now?
+
+`10.04` seems to be the oldest official Ubuntu image on Docker Hub. To use that
+instead, replace `14.04` with `10.04` or `lucid` in the
+[`Dockerfile`](Dockerfile).
+
+A smaller image could be created with something like Alpine, but that brings
+it´s own set of challenges. :slightly_smiling_face:
