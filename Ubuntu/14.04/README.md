@@ -46,6 +46,9 @@ $ docker run \
 
 replacing `$user` and `$hostname` with the appropriate values.
 
+Official docs:
+[docker run](https://docs.docker.com/engine/reference/commandline/run/)
+
 ### Command protip
 
 Make this massive Docker command a local function with something like this:
