@@ -2,6 +2,10 @@
 
 **This is a crash course, not a complete overview of Docker usage!**
 
+## Important Security Note
+
+There is no security, this is using ancient software!
+
 ## Building the image
 
 Build with e.g:
